@@ -34,8 +34,8 @@ export const getAllProducts = async () => {
 // Create
 
 export const addProduct = async (data) => {
-  const { name, price, quantity, image } = data;
-  const product = { name, price, quantity, image };
+  const { name, price, quantity, image, inFavourites } = data;
+  const product = { name, price, quantity, image, inFavourites: false };
   const collectionRef = collection(db, "products");
   const newDoc = await addDoc(collectionRef, product);
   console.log(newDoc);
