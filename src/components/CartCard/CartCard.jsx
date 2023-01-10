@@ -14,6 +14,7 @@ const CartCard = ({ product, added, setAdded }) => {
     setAdded(added + 1);
   };
   const handleDecrementInCart = async () => {
+    
     await decrementProductInCart(product.id);
     setAdded(added + 1);
   };
@@ -32,21 +33,25 @@ const CartCard = ({ product, added, setAdded }) => {
         >
           <h5>{product.name.substring(0, 50)}...</h5>
         </NavLink>
-        <p className={styles.Card_Element}>
-          Available Stock: {product.quantity}
-        </p>
-        <p className={styles.Card_Element}>
-          Quantity: <button onClick={decrementProductInCart}>-</button>
-          {product.amountInCart}
-          <button onClick={handleIncrementInCart}>+</button>
-        </p>
+        <div className={styles.Card_Flex}>
+          <p className={styles.Card_Element}>
+            Available Stock: {product.quantity}
+          </p>
+          <p className={styles.Card_Element}>
+            Quantity: <button onClick={handleDecrementInCart}>-</button>
+            {product.amountInCart}
+            <button onClick={handleIncrementInCart}>+</button>
+          </p>
+        </div>
       </div>
 
       <div>
-        <p className={styles.Card_Element}>AUD ${product.price}</p>
+        <p>AUD ${product.price}</p>
       </div>
 
-      <button onClick={handleDelete}>X</button>
+      <button className={styles.Card_Element_Delete} onClick={handleDelete}>
+        X
+      </button>
     </div>
   );
 };
