@@ -34,8 +34,8 @@ export const getAllProducts = async () => {
 // Create
 
 export const addProduct = async (data) => {
-  const { title, price, amountInStore } = data;
-  const product = { title, price, amountInStore };
+  const { name, price, quantity, image } = data;
+  const product = { name, price, quantity, image };
   const collectionRef = collection(db, "products");
   const newDoc = await addDoc(collectionRef, product);
   console.log(newDoc);
@@ -66,9 +66,30 @@ export const getProductById = async (id) => {
 
 // Update
 
-export const updateProduct = async (id) => {
+export const incrementProduct = async (id) => {
   const docRef = doc(db, "products", id);
   await updateDoc(docRef, {
-    amountInStore: increment(-1),
+    quantity: increment(1),
+  });
+};
+
+export const decrementProduct = async (id) => {
+  const docRef = doc(db, "products", id);
+  await updateDoc(docRef, {
+    quantity: increment(-1),
+  });
+};
+
+// export const updateProduct = async (id) => {
+//   const docRef = doc(db, "products", id);
+//   await updateDoc(docRef, {
+//     quantity: increment(-1),
+//   });
+// };
+
+export const toggleFavourite = async (id, newValue) => {
+  const docRef = doc(db, "products", id);
+  await updateDoc(docRef, {
+    inFavourites: newValue,
   });
 };

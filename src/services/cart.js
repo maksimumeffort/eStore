@@ -33,11 +33,10 @@ export const getAllProductsInCart = async () => {
 
 // Create
 
-export const addProductToCart = async (data) => {
-  const { title, price, amountInStore, amountInCart, id } = data;
-  const product = { title, price, amountInStore, amountInCart, id };
-
-  const newDoc = await setDoc(doc(db, "cart", id), product);
+export const addProductToCart = async (id, data) => {
+  // const { name, price, quanitity, amountInCart, id } = data;
+  // const product = { name, price, quanitity, amountInCart, id };
+  const newDoc = await setDoc(doc(db, "cart", id), data);
   console.log(newDoc);
   return newDoc;
 };
@@ -66,17 +65,17 @@ export const getProductById = async (id) => {
 
 // Update
 
-export const incrementProductInCart = async (id) => {
+export const incrementProductInCart = async (id, value) => {
   const docRef = doc(db, "cart", id);
   await updateDoc(docRef, {
-    amountInCart: increment(1),
+    amountInCart: increment(value),
   });
 };
 
-export const decrementProductAmount = async (id) => {
+export const decrementProductInCart = async (id) => {
   const docRef = doc(db, "cart", id);
   await updateDoc(docRef, {
-    amountInStore: increment(-1),
+    amountInCart: increment(-1),
   });
 };
 

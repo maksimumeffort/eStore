@@ -1,5 +1,10 @@
 import { NavLink } from "react-router-dom";
-import { deleteProductFromCart } from "../../services/cart";
+import {
+  deleteProductFromCart,
+  incrementProductInCart,
+  decrementProductInCart,
+} from "../../services/cart";
+
 // import {}
 import styles from "./CartCard.module.scss";
 
@@ -8,18 +13,26 @@ const CartCard = ({ product, added, setAdded }) => {
     await deleteProductFromCart(product.id);
     setAdded(added + 1);
   };
+  const handleDecrementInCart = async () => {
+    await decrementProductInCart(product.id);
+    setAdded(added + 1);
+  };
+  const handleIncrementInCart = async () => {
+    await incrementProductInCart(product.id);
+    setAdded(added + 1);
+  };
 
   return (
     <div className={styles.card}>
       <NavLink to={`/product/${product.id}`}>
-        <h2>{product.title}</h2>
+        <h4>{product.name}</h4>
       </NavLink>
-      <p>AUD ${product.price}</p>
-      <p>Available Stock: {product.amountInStore}</p>
+      <p>AUD ${product.pricePerUnit}</p>
+      <p>Available Stock: {product.quantity}</p>
       <p>
-        Quantity: <button>-</button>
+        Quantity: <button onClick={decrementProductInCart}>-</button>
         {product.amountInCart}
-        <button>+</button>
+        <button onClick={handleIncrementInCart}>+</button>
       </p>
       <button onClick={handleDelete}>Delete</button>
     </div>

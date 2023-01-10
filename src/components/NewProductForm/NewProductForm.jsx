@@ -36,8 +36,8 @@ const NewProductForm = ({ added, setAdded }) => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <label htmlFor="title">Title</label>
-      <input id="title" type="text" name="title" onChange={handleChange} />
+      <label htmlFor="name">Name</label>
+      <input id="name" type="text" name="name" onChange={handleChange} />
       <label htmlFor="price">Price</label>
       <input
         id="price"
@@ -46,11 +46,13 @@ const NewProductForm = ({ added, setAdded }) => {
         step=".01"
         onChange={handleChange}
       />
-      <label htmlFor="amountInStore">Stock</label>
+      <label htmlFor="image">Image</label>
+      <input id="image" type="text" name="image" onChange={handleChange} />
+      <label htmlFor="quantity">Stock</label>
       <input
-        id="amountInStore"
+        id="quantity"
         type="number"
-        name="amountInStore"
+        name="quantity"
         onChange={handleChange}
       />
       <input type="submit" />

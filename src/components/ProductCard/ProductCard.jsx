@@ -1,21 +1,31 @@
 import { NavLink } from "react-router-dom";
-import { deleteProduct } from "../../services/products";
+import { toggleFavourite } from "../../services/products";
 import styles from "./ProductCard.module.scss";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHeart } from "@fortawesome/free-regular-svg-icons";
 
 const ProductCard = ({ product, added, setAdded }) => {
-  const handleDelete = async () => {
-    await deleteProduct(product.id);
+  const handleFavourite = async () => {
+    await toggleFavourite(product.id, !product.inFavourites);
     setAdded(added + 1);
+    
   };
+  // console.log(product);
 
   return (
     <div className={styles.card}>
+      <img src={product.image} className={styles.img} />
       <NavLink to={`/product/${product.id}`}>
-        <h2>{product.title}</h2>
+        <h4>{product.name}</h4>
       </NavLink>
-      <p>AUD ${product.price}</p>
-      <p>Stock: {product.amountInStore}</p>
-      {/* <button onClick={handleDelete}>Delete</button> */}
+      <p>AUD ${product.pricePerUnit}</p>
+      <p>Available: {product.quantity}</p>
+      <p>Favourited: {product.inFavourites ? "yes" :"no"}</p>
+
+      <button onClick={handleFavourite}>
+        Heart
+        {/* <FontAwesomeIcon icon={faHeart} /> */}
+      </button>
     </div>
   );
 };
