@@ -1,6 +1,13 @@
 .App {
-  max-width: 1280px;
+  width: 92vw;
+  height: 92vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border: 1px solid red;
+}
+
+.Navigation {
+  border: 1px solid blue;
+  height: 50px;
 }

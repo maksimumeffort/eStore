@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import { deleteProduct } from "../../services/products";
+import { deleteProductFromCart } from "../../services/cart";
 // import {}
 import styles from "./CartCard.module.scss";
 
 const CartCard = ({ product, added, setAdded }) => {
   const handleDelete = async () => {
-    await deleteProduct(product.id);
+    await deleteProductFromCart(product.id);
     setAdded(added + 1);
   };
 
@@ -14,9 +14,13 @@ const CartCard = ({ product, added, setAdded }) => {
       <NavLink to={`/product/${product.id}`}>
         <h2>{product.title}</h2>
       </NavLink>
-      <p>{product.price}</p>
-      <p>{product.amountInCart}</p>
-      <p>{product.amountInStore}</p>
+      <p>AUD ${product.price}</p>
+      <p>Available Stock: {product.amountInStore}</p>
+      <p>
+        Quantity: <button>-</button>
+        {product.amountInCart}
+        <button>+</button>
+      </p>
       <button onClick={handleDelete}>Delete</button>
     </div>
   );

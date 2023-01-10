@@ -13,9 +13,9 @@ const ProductCard = ({ product, added, setAdded }) => {
       <NavLink to={`/product/${product.id}`}>
         <h2>{product.title}</h2>
       </NavLink>
-      <p>{product.price}</p>
-      <p>{product.amountInStore}</p>
-      <button onClick={handleDelete}>Delete</button>
+      <p>AUD ${product.price}</p>
+      <p>Stock: {product.amountInStore}</p>
+      {/* <button onClick={handleDelete}>Delete</button> */}
     </div>
   );
 };

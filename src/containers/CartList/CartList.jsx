@@ -22,7 +22,6 @@ const CartList = ({ added, setAdded }) => {
 
   return (
     <>
-      <h2>Cart List</h2>
       <div className={styles.CartList}>
         {productsInCart &&
           productsInCart.map((product) => {
@@ -35,6 +34,11 @@ const CartList = ({ added, setAdded }) => {
               />
             );
           })}
+      </div>
+      <div>
+        {productsInCart.reduce((total, product) => {
+          return total + product.price;
+        }, 0)}
       </div>
     </>
   );

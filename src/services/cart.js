@@ -44,7 +44,7 @@ export const addProductToCart = async (data) => {
 
 // Delete
 
-export const deleteProduct = async (id) => {
+export const deleteProductFromCart = async (id) => {
   const docRef = doc(db, "cart", id);
   await deleteDoc(docRef);
   console.log("deleted");

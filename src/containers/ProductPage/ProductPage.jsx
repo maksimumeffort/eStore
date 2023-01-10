@@ -6,6 +6,7 @@ import {
   checkIfInCart,
   incrementProductInCart,
 } from "../../services/cart";
+import styles from "./ProductPage.module.scss";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -41,8 +42,13 @@ const ProductPage = () => {
   return (
     <div>
       <h1>{productInfo.title}</h1>
-      <p>{productInfo.price}</p>
-      <p>{productInfo.amountInStore}</p>
+      <p>AUD ${productInfo.price}</p>
+      <p>Stock: {productInfo.amountInStore}</p>
+
+      <p>
+        <button>-</button>1<button>+</button>
+      </p>
+
       <button onClick={handleClick}>Purchase</button>
     </div>
   );
