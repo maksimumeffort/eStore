@@ -39,13 +39,14 @@ const App = () => {
               path="/"
               element={
                 <div>
-                  <h2>eStore</h2>
                   <FeaturedCarousel />
-                  <ProductList
-                    products={productsInStore}
-                    added={addedProducts}
-                    setAdded={setAddedProducts}
-                  />
+                  <div className={styles.ProductList}>
+                    <ProductList
+                      products={productsInStore}
+                      added={addedProducts}
+                      setAdded={setAddedProducts}
+                    />
+                  </div>
                 </div>
               }
             />
