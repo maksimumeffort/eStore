@@ -5,11 +5,9 @@ const Nav = () => {
   return (
     <nav className={styles.nav}>
       <NavLink to="/">Home</NavLink>
-      <NavLink to="/new-product">Add Product</NavLink>
 
-      <div>
-        <NavLink to="cart">Cart</NavLink>
-      </div>
+      <NavLink to="cart">Cart</NavLink>
+      {/* <NavLink to="/new-product">Add Product</NavLink> */}
     </nav>
   );
 };

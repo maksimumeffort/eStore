@@ -23,18 +23,30 @@ const CartCard = ({ product, added, setAdded }) => {
   };
 
   return (
-    <div className={styles.card}>
-      <NavLink to={`/product/${product.id}`}>
-        <h4>{product.name}</h4>
-      </NavLink>
-      <p>AUD ${product.pricePerUnit}</p>
-      <p>Available Stock: {product.quantity}</p>
-      <p>
-        Quantity: <button onClick={decrementProductInCart}>-</button>
-        {product.amountInCart}
-        <button onClick={handleIncrementInCart}>+</button>
-      </p>
-      <button onClick={handleDelete}>Delete</button>
+    <div className={styles.Card}>
+      <img src={product.image} className={styles.Card_Img} />
+      <div>
+        <NavLink
+          to={`/product/${product.id}`}
+          className={styles.Card_ElementLink}
+        >
+          <h5>{product.name.substring(0, 50)}...</h5>
+        </NavLink>
+        <p className={styles.Card_Element}>
+          Available Stock: {product.quantity}
+        </p>
+        <p className={styles.Card_Element}>
+          Quantity: <button onClick={decrementProductInCart}>-</button>
+          {product.amountInCart}
+          <button onClick={handleIncrementInCart}>+</button>
+        </p>
+      </div>
+
+      <div>
+        <p className={styles.Card_Element}>AUD ${product.price}</p>
+      </div>
+
+      <button onClick={handleDelete}>X</button>
     </div>
   );
 };

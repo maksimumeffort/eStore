@@ -63,7 +63,7 @@ const ProductPage = () => {
     <div>
       <img src={productInfo.image} className={styles.img} />
       <h4>{productInfo.name}</h4>
-      <p>AUD ${productInfo.pricePerUnit}</p>
+      <p>AUD ${productInfo.price}</p>
       <p>Stock: {productInfo.quantity}</p>
 
       <p>
@@ -72,7 +72,7 @@ const ProductPage = () => {
         <button onClick={handleIncrement}>+</button>
       </p>
 
-      <button onClick={handleClick}>Purchase</button>
+      <button onClick={handleClick}>Add To Cart</button>
     </div>
   );
 };

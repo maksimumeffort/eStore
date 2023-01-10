@@ -39,6 +39,7 @@ const App = () => {
               path="/"
               element={
                 <div>
+                  {/* TODO: featured carousel sometimes goes over the navigation bar */}
                   <FeaturedCarousel />
                   <div className={styles.ProductList}>
                     <ProductList
@@ -67,7 +68,6 @@ const App = () => {
               path="/cart"
               element={
                 <div>
-                  <h2>Cart</h2>
                   <CartList
                     products={productsInCart}
                     added={addedProducts}
