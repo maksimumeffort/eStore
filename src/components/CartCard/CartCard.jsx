@@ -1,26 +1,47 @@
+import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import {
   deleteProductFromCart,
   incrementProductInCart,
   decrementProductInCart,
+  getAllProductsInCart,
 } from "../../services/cart";
+import { incrementProduct, decrementProduct } from "../../services/products";
 
 // import {}
 import styles from "./CartCard.module.scss";
 
 const CartCard = ({ product, added, setAdded }) => {
+  const [inc, setInc] = useState(product.amountInCart);
+  console.log(inc);
+  const [cartInfo, setCartInfo] = useState({});
+
+  // useEffect(() => {
+  //   const wrapper = async () => {
+  //     const data = await getAllProductsInCart();
+  //     //   console.log(data);
+  //     setCartInfo(data);
+  //   };
+  //   wrapper();
+  // }, [inc]);
+
   const handleDelete = async () => {
     await deleteProductFromCart(product.id);
     setAdded(added + 1);
   };
   const handleDecrementInCart = async () => {
-    
-    await decrementProductInCart(product.id);
-    setAdded(added + 1);
+    if (inc >= 1) {
+      await decrementProductInCart(product.id);
+      await incrementProduct(product.id);
+      setInc(inc - 1);
+      console.log(`new quantity: ${product.quantity}`);
+    }
   };
   const handleIncrementInCart = async () => {
     await incrementProductInCart(product.id);
-    setAdded(added + 1);
+    await decrementProduct(product.id);
+    setInc(inc + 1);
+    console.log(`new quantity: ${product.quantity}`);
   };
 
   return (

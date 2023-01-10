@@ -46,13 +46,16 @@ const ProductPage = () => {
       //   console.log("updated");
       setClicked(clicked + 1);
       const isInCart = await checkIfInCart(id);
-      console.log(isInCart);
-      console.log(id);
-      console.log(productInfo);
-      if (isInCart) {
+      // console.log(isInCart);
+      // console.log(id);
+      // console.log(productInfo);
+      const isValid = inc >= 1;
+      if (isInCart && isValid) {
         await incrementProductInCart(id, inc);
-      } else {
+      } else if (isValid) {
         await addProductToCart(id, { ...productInfo, amountInCart: inc });
+      } else {
+        console.log("invalid quantity selected");
       }
     } catch (e) {
       console.log(e.message);
@@ -60,19 +63,20 @@ const ProductPage = () => {
   };
 
   return (
-    <div>
-      <img src={productInfo.image} className={styles.img} />
-      <h4>{productInfo.name}</h4>
-      <p>AUD ${productInfo.price}</p>
-      <p>Stock: {productInfo.quantity}</p>
+    <div className={styles.Container}>
+      <div className={styles.Card}>
+        <img src={productInfo.image} className={styles.Img} />
+        <h4>{productInfo.name}</h4>
+        <p>AUD ${productInfo.price}</p>
+        <p>Stock: {productInfo.quantity}</p>
 
-      <p>
-        <button onClick={handleDecrement}>-</button>
-        {inc}
-        <button onClick={handleIncrement}>+</button>
-      </p>
-
-      <button onClick={handleClick}>Add To Cart</button>
+        <p>
+          <button onClick={handleDecrement}>-</button>
+          {inc}
+          <button onClick={handleIncrement}>+</button>
+        </p>
+        <button onClick={handleClick}>Add To Cart</button>
+      </div>
     </div>
   );
 };

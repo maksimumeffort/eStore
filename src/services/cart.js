@@ -65,10 +65,10 @@ export const getProductById = async (id) => {
 
 // Update
 
-export const incrementProductInCart = async (id, value) => {
+export const incrementProductInCart = async (id) => {
   const docRef = doc(db, "cart", id);
   await updateDoc(docRef, {
-    amountInCart: increment(value),
+    amountInCart: increment(1),
   });
 };
 
