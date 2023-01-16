@@ -1,0 +1,33 @@
+.Card {
+  border: 2px solid grey;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  width: 98%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &_Card_Flex {
+    display: flex;
+  }
+  &_Element {
+    // border: 1px solid green;
+    &_Delete {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: none;
+    }
+    &_Flex {
+      display: flex;
+      border: 1px solid blue;
+      height: 100px;
+    }
+  }
+  &_Img {
+    height: 100px;
+    // border: 1px solid green;
+  }
+}

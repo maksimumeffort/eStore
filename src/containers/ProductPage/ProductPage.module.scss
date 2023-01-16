@@ -1,0 +1,18 @@
+.Img {
+  width: 400px;
+}
+
+.Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Card {
+  margin-top: 30px;
+  width: 80%;
+  // height: 80%;
+  border: 1px solid grey;
+  border-radius: 8px;
+  padding: 30px;
+}
